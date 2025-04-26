@@ -12,19 +12,12 @@ export default function Home() {
             <span>QuoteCard</span>
           </div>
           <nav className="flex items-center gap-4">
-            <Link
-              href="/galeria"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium"
-            >
-              Galeria
-            </Link>
-            <Link
-              href="/criar"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium"
-            >
-              Criar Card
-            </Link>
-            <Button size="sm">Entrar</Button>
+            <Button variant="link" asChild>
+              <Link href="/galeria">Galeria</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/criar">Criar Card</Link>
+            </Button>
           </nav>
         </div>
       </header>
