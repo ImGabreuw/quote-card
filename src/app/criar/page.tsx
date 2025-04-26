@@ -1,19 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { toPng } from "html-to-image"
-import { Download, Share2, RefreshCw, ArrowLeft } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Slider } from "@/components/ui/slider"
-import { QuoteCardPreview } from "@/components/quote-card-preview"
-import { cn } from "@/lib/utils"
+import { QuoteCardPreview } from "@/components/quote-card-preview";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import { ArrowLeft, Download, RefreshCw, Share2 } from "lucide-react";
+import Link from "next/link";
+import { useRef, useState } from "react";
 
 const gradients = [
   "bg-white",
@@ -24,15 +34,15 @@ const gradients = [
   "bg-gradient-to-r from-green-100 to-emerald-100",
   "bg-gradient-to-br from-slate-100 to-slate-200",
   "bg-gradient-to-br from-rose-50 to-indigo-50",
-]
+];
 
-const fontFamilies = ["font-sans", "font-serif", "font-mono"]
+const fontFamilies = ["font-sans", "font-serif", "font-mono"];
 
 export default function CriarPage() {
   const [quote, setQuote] = useState(
     "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
-  )
-  const [author, setAuthor] = useState("Marcel Proust")
+  );
+  const [author, setAuthor] = useState("Marcel Proust");
   const [style, setStyle] = useState({
     gradient: "bg-gradient-to-br from-rose-50 to-indigo-50",
     fontFamily: "font-serif",
@@ -43,55 +53,27 @@ export default function CriarPage() {
     quoteIconColor: "text-primary/30",
     quoteTextColor: "text-gray-800",
     authorTextColor: "text-gray-700",
-  })
+  });
 
-  const cardRef = useRef(null)
-
-  const downloadCard = async () => {
-    if (cardRef.current) {
-      const dataUrl = await toPng(cardRef.current, { quality: 0.95 })
-      // Criar um link temporário para download
-      const link = document.createElement("a")
-      link.href = dataUrl
-      link.download = `quote-card-${Date.now()}.png`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    }
-  }
-
-  const shareCard = async () => {
-    if (cardRef.current && navigator.share) {
-      const dataUrl = await toPng(cardRef.current, { quality: 0.95 })
-      const blob = await (await fetch(dataUrl)).blob()
-      const file = new File([blob], "quote-card.png", { type: "image/png" })
-
-      try {
-        await navigator.share({
-          title: "Meu QuoteCard",
-          text: `"${quote}" - ${author}`,
-          files: [file],
-        })
-      } catch (error) {
-        console.error("Erro ao compartilhar:", error)
-      }
-    }
-  }
+  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
-        <div className="mx-auto container flex h-16 items-center">
-          <Link href="/" className="flex items-center gap-2 text-sm font-medium">
+      <header className="bg-background/95 sticky top-0 z-50 w-full border-b backdrop-blur">
+        <div className="container mx-auto flex h-16 items-center">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-sm font-medium"
+          >
             <ArrowLeft className="h-4 w-4" />
             Voltar para Home
           </Link>
           <div className="ml-auto flex items-center gap-2">
-            <Button size="sm" variant="outline" onClick={downloadCard}>
+            <Button size="sm" variant="outline">
               <Download className="mr-2 h-4 w-4" />
               Baixar
             </Button>
-            <Button size="sm" onClick={shareCard}>
+            <Button size="sm">
               <Share2 className="mr-2 h-4 w-4" />
               Compartilhar
             </Button>
@@ -99,12 +81,14 @@ export default function CriarPage() {
         </div>
       </header>
 
-      <main className="mx-auto container flex-1 py-6">
+      <main className="container mx-auto flex-1 py-6">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-6">
             <div className="space-y-4">
               <h1 className="text-2xl font-bold">Crie seu QuoteCard</h1>
-              <p className="text-muted-foreground">Personalize sua citação e estilo para criar um card único.</p>
+              <p className="text-muted-foreground">
+                Personalize sua citação e estilo para criar um card único.
+              </p>
             </div>
 
             <div className="space-y-4">
@@ -114,7 +98,9 @@ export default function CriarPage() {
                   id="quote"
                   placeholder="Digite a citação aqui..."
                   value={quote}
-                  onChange={(e) => setQuote(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                    setQuote(e.target.value)
+                  }
                   className="min-h-[100px]"
                 />
               </div>
@@ -125,7 +111,9 @@ export default function CriarPage() {
                   id="author"
                   placeholder="Nome do autor"
                   value={author}
-                  onChange={(e) => setAuthor(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setAuthor(e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -151,7 +139,8 @@ export default function CriarPage() {
                               className={cn(
                                 gradient,
                                 "h-12 rounded-md border transition-all hover:scale-105",
-                                style.gradient === gradient && "ring-2 ring-primary ring-offset-2",
+                                style.gradient === gradient &&
+                                  "ring-primary ring-2 ring-offset-2",
                               )}
                               onClick={() => setStyle({ ...style, gradient })}
                             />
@@ -161,16 +150,25 @@ export default function CriarPage() {
 
                       <div className="space-y-2">
                         <Label>Sombra</Label>
-                        <Select value={style.shadow} onValueChange={(shadow) => setStyle({ ...style, shadow })}>
+                        <Select
+                          value={style.shadow}
+                          onValueChange={(shadow: string) =>
+                            setStyle({ ...style, shadow })
+                          }
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Selecione o estilo de sombra" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="shadow-none">Sem sombra</SelectItem>
+                            <SelectItem value="shadow-none">
+                              Sem sombra
+                            </SelectItem>
                             <SelectItem value="shadow-sm">Pequena</SelectItem>
                             <SelectItem value="shadow-md">Média</SelectItem>
                             <SelectItem value="shadow-lg">Grande</SelectItem>
-                            <SelectItem value="shadow-xl">Extra grande</SelectItem>
+                            <SelectItem value="shadow-xl">
+                              Extra grande
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -183,7 +181,12 @@ export default function CriarPage() {
                             min={0}
                             max={24}
                             step={1}
-                            onValueChange={(value) => setStyle({ ...style, borderRadius: value[0] })}
+                            onValueChange={(value: number[]) =>
+                              setStyle({
+                                ...style,
+                                borderRadius: value[0] ?? 12,
+                              })
+                            }
                           />
                         </div>
                       </div>
@@ -194,13 +197,17 @@ export default function CriarPage() {
                         <Label>Família da fonte</Label>
                         <Select
                           value={style.fontFamily}
-                          onValueChange={(fontFamily) => setStyle({ ...style, fontFamily })}
+                          onValueChange={(fontFamily: string) =>
+                            setStyle({ ...style, fontFamily })
+                          }
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Selecione a fonte" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="font-sans">Sans-serif</SelectItem>
+                            <SelectItem value="font-sans">
+                              Sans-serif
+                            </SelectItem>
                             <SelectItem value="font-serif">Serif</SelectItem>
                             <SelectItem value="font-mono">Monospace</SelectItem>
                           </SelectContent>
@@ -215,7 +222,9 @@ export default function CriarPage() {
                             min={14}
                             max={24}
                             step={1}
-                            onValueChange={(value) => setStyle({ ...style, fontSize: value[0] })}
+                            onValueChange={(value: number[]) =>
+                              setStyle({ ...style, fontSize: value[0] ?? 18 })
+                            }
                           />
                         </div>
                       </div>
@@ -224,15 +233,23 @@ export default function CriarPage() {
                         <Label>Cor do texto da citação</Label>
                         <Select
                           value={style.quoteTextColor}
-                          onValueChange={(quoteTextColor) => setStyle({ ...style, quoteTextColor })}
+                          onValueChange={(quoteTextColor: string) =>
+                            setStyle({ ...style, quoteTextColor })
+                          }
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Selecione a cor" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="text-gray-800">Cinza escuro</SelectItem>
-                            <SelectItem value="text-gray-600">Cinza médio</SelectItem>
-                            <SelectItem value="text-primary">Primária</SelectItem>
+                            <SelectItem value="text-gray-800">
+                              Cinza escuro
+                            </SelectItem>
+                            <SelectItem value="text-gray-600">
+                              Cinza médio
+                            </SelectItem>
+                            <SelectItem value="text-primary">
+                              Primária
+                            </SelectItem>
                             <SelectItem value="text-black">Preto</SelectItem>
                           </SelectContent>
                         </Select>
@@ -242,15 +259,23 @@ export default function CriarPage() {
                         <Label>Cor do texto do autor</Label>
                         <Select
                           value={style.authorTextColor}
-                          onValueChange={(authorTextColor) => setStyle({ ...style, authorTextColor })}
+                          onValueChange={(authorTextColor: string) =>
+                            setStyle({ ...style, authorTextColor })
+                          }
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Selecione a cor" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="text-gray-700">Cinza escuro</SelectItem>
-                            <SelectItem value="text-gray-500">Cinza médio</SelectItem>
-                            <SelectItem value="text-primary">Primária</SelectItem>
+                            <SelectItem value="text-gray-700">
+                              Cinza escuro
+                            </SelectItem>
+                            <SelectItem value="text-gray-500">
+                              Cinza médio
+                            </SelectItem>
+                            <SelectItem value="text-primary">
+                              Primária
+                            </SelectItem>
                             <SelectItem value="text-black">Preto</SelectItem>
                           </SelectContent>
                         </Select>
@@ -260,16 +285,26 @@ export default function CriarPage() {
                         <Label>Cor dos ícones de aspas</Label>
                         <Select
                           value={style.quoteIconColor}
-                          onValueChange={(quoteIconColor) => setStyle({ ...style, quoteIconColor })}
+                          onValueChange={(quoteIconColor: string) =>
+                            setStyle({ ...style, quoteIconColor })
+                          }
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Selecione a cor" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="text-primary/30">Primária (suave)</SelectItem>
-                            <SelectItem value="text-primary">Primária</SelectItem>
-                            <SelectItem value="text-gray-300">Cinza claro</SelectItem>
-                            <SelectItem value="text-gray-500">Cinza médio</SelectItem>
+                            <SelectItem value="text-primary/30">
+                              Primária (suave)
+                            </SelectItem>
+                            <SelectItem value="text-primary">
+                              Primária
+                            </SelectItem>
+                            <SelectItem value="text-gray-300">
+                              Cinza claro
+                            </SelectItem>
+                            <SelectItem value="text-gray-500">
+                              Cinza médio
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -284,7 +319,9 @@ export default function CriarPage() {
                             min={10}
                             max={50}
                             step={5}
-                            onValueChange={(value) => setStyle({ ...style, padding: value[0] })}
+                            onValueChange={(value: number[]) =>
+                              setStyle({ ...style, padding: value[0] ?? 30 })
+                            }
                           />
                         </div>
                       </div>
@@ -298,10 +335,11 @@ export default function CriarPage() {
                 <AccordionContent>
                   <div className="grid grid-cols-2 gap-3">
                     <button
-                      className="flex flex-col items-center rounded-lg border p-3 transition-all hover:bg-accent"
+                      className="hover:bg-accent flex flex-col items-center rounded-lg border p-3 transition-all"
                       onClick={() => {
                         setStyle({
-                          gradient: "bg-gradient-to-br from-rose-50 to-indigo-50",
+                          gradient:
+                            "bg-gradient-to-br from-rose-50 to-indigo-50",
                           fontFamily: "font-serif",
                           fontSize: 18,
                           padding: 30,
@@ -310,7 +348,7 @@ export default function CriarPage() {
                           quoteIconColor: "text-primary/30",
                           quoteTextColor: "text-gray-800",
                           authorTextColor: "text-gray-700",
-                        })
+                        });
                       }}
                     >
                       <div className="mb-2 h-20 w-full rounded bg-gradient-to-br from-rose-50 to-indigo-50"></div>
@@ -318,10 +356,11 @@ export default function CriarPage() {
                     </button>
 
                     <button
-                      className="flex flex-col items-center rounded-lg border p-3 transition-all hover:bg-accent"
+                      className="hover:bg-accent flex flex-col items-center rounded-lg border p-3 transition-all"
                       onClick={() => {
                         setStyle({
-                          gradient: "bg-gradient-to-r from-blue-100 to-cyan-100",
+                          gradient:
+                            "bg-gradient-to-r from-blue-100 to-cyan-100",
                           fontFamily: "font-sans",
                           fontSize: 18,
                           padding: 30,
@@ -330,7 +369,7 @@ export default function CriarPage() {
                           quoteIconColor: "text-primary",
                           quoteTextColor: "text-gray-800",
                           authorTextColor: "text-primary",
-                        })
+                        });
                       }}
                     >
                       <div className="mb-2 h-20 w-full rounded bg-gradient-to-r from-blue-100 to-cyan-100"></div>
@@ -338,7 +377,7 @@ export default function CriarPage() {
                     </button>
 
                     <button
-                      className="flex flex-col items-center rounded-lg border p-3 transition-all hover:bg-accent"
+                      className="hover:bg-accent flex flex-col items-center rounded-lg border p-3 transition-all"
                       onClick={() => {
                         setStyle({
                           gradient: "bg-white",
@@ -350,7 +389,7 @@ export default function CriarPage() {
                           quoteIconColor: "text-gray-300",
                           quoteTextColor: "text-black",
                           authorTextColor: "text-gray-700",
-                        })
+                        });
                       }}
                     >
                       <div className="mb-2 h-20 w-full rounded bg-white"></div>
@@ -358,10 +397,11 @@ export default function CriarPage() {
                     </button>
 
                     <button
-                      className="flex flex-col items-center rounded-lg border p-3 transition-all hover:bg-accent"
+                      className="hover:bg-accent flex flex-col items-center rounded-lg border p-3 transition-all"
                       onClick={() => {
                         setStyle({
-                          gradient: "bg-gradient-to-r from-yellow-100 to-orange-100",
+                          gradient:
+                            "bg-gradient-to-r from-yellow-100 to-orange-100",
                           fontFamily: "font-sans",
                           fontSize: 18,
                           padding: 35,
@@ -370,7 +410,7 @@ export default function CriarPage() {
                           quoteIconColor: "text-gray-500",
                           quoteTextColor: "text-gray-800",
                           authorTextColor: "text-gray-700",
-                        })
+                        });
                       }}
                     >
                       <div className="mb-2 h-20 w-full rounded bg-gradient-to-r from-yellow-100 to-orange-100"></div>
@@ -385,8 +425,10 @@ export default function CriarPage() {
               variant="outline"
               className="w-full"
               onClick={() => {
-                setQuote("The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.")
-                setAuthor("Marcel Proust")
+                setQuote(
+                  "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
+                );
+                setAuthor("Marcel Proust");
               }}
             >
               <RefreshCw className="mr-2 h-4 w-4" />
@@ -395,10 +437,15 @@ export default function CriarPage() {
           </div>
 
           <div className="flex items-center justify-center p-4">
-            <QuoteCardPreview ref={cardRef} quote={quote} author={author} style={style} />
+            <QuoteCardPreview
+              ref={cardRef}
+              quote={quote}
+              author={author}
+              style={style}
+            />
           </div>
         </div>
       </main>
     </div>
-  )
+  );
 }
