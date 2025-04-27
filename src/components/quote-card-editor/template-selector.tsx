@@ -19,9 +19,9 @@ export function TemplateSelector({ onSelectTemplate }: TemplateSelectorProps) {
           <div className="grid grid-cols-2 gap-3">
             {CARD_MODELS.map((template) => (
               <button
-                key={template.name}
+                key={template.id}
                 className="hover:bg-accent flex flex-col items-center rounded-lg border p-3 transition-all"
-                onClick={() => onSelectTemplate(template.name)}
+                onClick={() => onSelectTemplate(template.id)}
               >
                 <div
                   className={`mb-2 h-20 w-full rounded ${template.previewGradient}`}

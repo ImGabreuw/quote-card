@@ -39,7 +39,7 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
             <TabsContent value="background" className="space-y-4 pt-4">
               <div className="space-y-2">
                 <Label>Estilo de fundo</Label>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-2 px-2">
                   {GRADIENTS.map((gradient) => (
                     <button
                       key={gradient}
@@ -122,9 +122,6 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
                   />
                 </div>
               </div>
-
-              {/* Outros controles de texto... */}
-              {/* Para encurtar, removi alguns controles de textos, mas eles seguiriam o mesmo padrão */}
             </TabsContent>
 
             <TabsContent value="layout" className="space-y-4 pt-4">

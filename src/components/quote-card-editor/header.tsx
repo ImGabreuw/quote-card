@@ -20,7 +20,7 @@ export function PageHeader({ onDownload, onShare }: PageHeaderProps) {
             <Download className="mr-2 h-4 w-4" />
             Baixar
           </Button>
-          <Button size="sm" onClick={onShare}>
+          <Button size="sm" onClick={onShare} disabled>
             <Share2 className="mr-2 h-4 w-4" />
             Compartilhar
           </Button>

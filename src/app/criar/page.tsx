@@ -78,7 +78,7 @@ export default function CriarPage() {
               onClick={resetDefaults}
             >
               <RefreshCw className="mr-2 h-4 w-4" />
-              Restaurar exemplo
+              Restaurar Padrão
             </Button>
           </div>
 
