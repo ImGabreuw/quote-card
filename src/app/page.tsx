@@ -13,10 +13,10 @@ export default function Home() {
           </div>
           <nav className="flex items-center gap-4">
             <Button variant="link" asChild>
-              <Link href="/galeria">Galeria</Link>
+              <Link href="/galeria">Gallery</Link>
             </Button>
             <Button asChild>
-              <Link href="/criar">Criar Card</Link>
+              <Link href="/criar">Create Card</Link>
             </Button>
           </nav>
         </div>
@@ -25,25 +25,24 @@ export default function Home() {
         <section className="grid items-center gap-6 pt-16 pb-8 md:py-24">
           <div className="flex flex-col items-center gap-4 text-center">
             <div className="bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium">
-              Crie cards de citações incríveis
+              Create amazing quote cards
             </div>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Transforme citações em{" "}
-              <span className="text-primary">arte visual</span>
+              Turn quotes into{" "}
+              <span className="text-primary">visual art</span>
             </h1>
             <p className="text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8">
-              Crie cards personalizados para suas citações favoritas e
-              compartilhe em suas redes sociais, portfólio ou blog.
+              Create personalized cards for your favorite quotes and share them on your social networks, portfolio, or blog.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild>
                 <Link href="/criar">
-                  Criar agora
+                  Create now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/galeria">Ver exemplos</Link>
+                <Link href="/galeria">See examples</Link>
               </Button>
             </div>
           </div>
@@ -56,8 +55,7 @@ export default function Home() {
                 <div className="relative">
                   <Quote className="text-primary/30 absolute -top-2 -left-2 h-8 w-8 rotate-180" />
                   <p className="px-6 py-2 text-lg text-gray-800 italic">
-                    The real voyage of discovery consists not in seeking new
-                    landscapes, but in having new eyes.
+                    The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.
                   </p>
                   <Quote className="text-primary/30 absolute -right-2 -bottom-2 h-8 w-8" />
                 </div>
@@ -68,29 +66,27 @@ export default function Home() {
             </div>
             <div className="flex-1 space-y-4">
               <h2 className="text-3xl font-bold">
-                Destaque suas citações favoritas
+                Highlight your favorite quotes
               </h2>
               <p className="text-muted-foreground">
-                Com o QuoteCard, você pode criar cards visualmente atraentes
-                para suas citações favoritas em segundos. Personalize cores,
-                fontes, estilos e compartilhe facilmente.
+                With QuoteCard, you can create visually appealing cards for your favorite quotes in seconds. Customize colors, fonts, styles, and share easily.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <Sparkles className="text-primary h-5 w-5" />
-                  <span>Dezenas de estilos personalizáveis</span>
+                  <span>Dozens of customizable styles</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Sparkles className="text-primary h-5 w-5" />
-                  <span>Exporte como imagem em alta qualidade</span>
+                  <span>Export as high-quality image</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Sparkles className="text-primary h-5 w-5" />
-                  <span>Compartilhe diretamente nas redes sociais</span>
+                  <span>Share directly on social networks</span>
                 </li>
               </ul>
               <Button asChild>
-                <Link href="/criar">Experimente agora</Link>
+                <Link href="/criar">Try it now</Link>
               </Button>
             </div>
           </div>
@@ -104,13 +100,13 @@ export default function Home() {
           </div>
           <nav className="text-muted-foreground flex gap-4 text-sm">
             <Link href="#" className="hover:text-foreground">
-              Termos
+              Terms
             </Link>
             <Link href="#" className="hover:text-foreground">
-              Privacidade
+              Privacy
             </Link>
             <Link href="#" className="hover:text-foreground">
-              Contato
+              Contact
             </Link>
           </nav>
         </div>

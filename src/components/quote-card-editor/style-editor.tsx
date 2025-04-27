@@ -27,18 +27,18 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
   return (
     <Accordion type="single" collapsible defaultValue="appearance">
       <AccordionItem value="appearance">
-        <AccordionTrigger>Aparência</AccordionTrigger>
+        <AccordionTrigger>Appearance</AccordionTrigger>
         <AccordionContent>
           <Tabs defaultValue="background">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="background">Fundo</TabsTrigger>
-              <TabsTrigger value="text">Texto</TabsTrigger>
+              <TabsTrigger value="background">Background</TabsTrigger>
+              <TabsTrigger value="text">Text</TabsTrigger>
               <TabsTrigger value="layout">Layout</TabsTrigger>
             </TabsList>
 
             <TabsContent value="background" className="space-y-4 pt-4">
               <div className="space-y-2">
-                <Label>Estilo de fundo</Label>
+                <Label>Background style</Label>
                 <div className="grid grid-cols-4 gap-2 px-2">
                   {GRADIENTS.map((gradient) => (
                     <button
@@ -56,26 +56,26 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
               </div>
 
               <div className="space-y-2">
-                <Label>Sombra</Label>
+                <Label>Shadow</Label>
                 <Select
                   value={style.shadow}
                   onValueChange={(shadow) => onStyleChange({ shadow })}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Selecione o estilo de sombra" />
+                    <SelectValue placeholder="Select shadow style" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="shadow-none">Sem sombra</SelectItem>
-                    <SelectItem value="shadow-sm">Pequena</SelectItem>
-                    <SelectItem value="shadow-md">Média</SelectItem>
-                    <SelectItem value="shadow-lg">Grande</SelectItem>
-                    <SelectItem value="shadow-xl">Extra grande</SelectItem>
+                    <SelectItem value="shadow-none">No shadow</SelectItem>
+                    <SelectItem value="shadow-sm">Small</SelectItem>
+                    <SelectItem value="shadow-md">Medium</SelectItem>
+                    <SelectItem value="shadow-lg">Large</SelectItem>
+                    <SelectItem value="shadow-xl">Extra large</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-2">
-                <Label>Arredondamento</Label>
+                <Label>Border radius</Label>
                 <div className="pt-2">
                   <Slider
                     value={[style.borderRadius]}
@@ -92,13 +92,13 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
 
             <TabsContent value="text" className="space-y-4 pt-4">
               <div className="space-y-2">
-                <Label>Família da fonte</Label>
+                <Label>Font family</Label>
                 <Select
                   value={style.fontFamily}
                   onValueChange={(fontFamily) => onStyleChange({ fontFamily })}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Selecione a fonte" />
+                    <SelectValue placeholder="Select font" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="font-sans">Sans-serif</SelectItem>
@@ -109,7 +109,7 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
               </div>
 
               <div className="space-y-2">
-                <Label>Tamanho da fonte</Label>
+                <Label>Font size</Label>
                 <div className="pt-2">
                   <Slider
                     value={[style.fontSize]}
@@ -126,7 +126,7 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
 
             <TabsContent value="layout" className="space-y-4 pt-4">
               <div className="space-y-2">
-                <Label>Espaçamento interno</Label>
+                <Label>Padding</Label>
                 <div className="pt-2">
                   <Slider
                     value={[style.padding]}

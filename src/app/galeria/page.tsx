@@ -11,12 +11,12 @@ export default function GaleriaPage() {
         <div className="mx-auto container flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-sm font-medium">
             <ArrowLeft className="h-4 w-4" />
-            Voltar para Home
+            Back to Home
           </Link>
           <Button asChild>
             <Link href="/criar">
               <Plus className="mr-2 h-4 w-4" />
-              Criar novo
+              Create new
             </Link>
           </Button>
         </div>
@@ -25,9 +25,9 @@ export default function GaleriaPage() {
       <main className="mx-auto container flex-1 py-6">
         <div className="space-y-6">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold">Galeria de exemplos</h1>
+            <h1 className="text-3xl font-bold">Gallery of Examples</h1>
             <p className="text-muted-foreground">
-              Explore nossa coleção de cards de citações e inspire-se para criar o seu próprio.
+              Explore our collection of quote cards and get inspired to create your own.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function GaleriaPage() {
                         },
                       }}
                     >
-                      Usar este modelo
+                      Use this template
                     </Link>
                   </Button>
                 </div>
@@ -63,7 +63,7 @@ export default function GaleriaPage() {
         <div className="mx-auto container flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-sm text-muted-foreground">QuoteCard © {new Date().getFullYear()}</div>
           <Button asChild variant="outline" size="sm">
-            <Link href="/criar">Criar seu QuoteCard</Link>
+            <Link href="/criar">Create your QuoteCard</Link>
           </Button>
         </div>
       </footer>

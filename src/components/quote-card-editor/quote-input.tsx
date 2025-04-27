@@ -13,10 +13,10 @@ export function QuoteInput({ quote, author, onQuoteChange, onAuthorChange }: Quo
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="quote">Citação</Label>
+        <Label htmlFor="quote">Quote</Label>
         <Textarea
           id="quote"
-          placeholder="Digite a citação aqui..."
+          placeholder="Type the quote here..."
           value={quote}
           onChange={(e) => onQuoteChange(e.target.value)}
           className="min-h-[100px]"
@@ -24,10 +24,10 @@ export function QuoteInput({ quote, author, onQuoteChange, onAuthorChange }: Quo
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="author">Autor</Label>
+        <Label htmlFor="author">Author</Label>
         <Input
           id="author"
-          placeholder="Nome do autor"
+          placeholder="Author's name"
           value={author}
           onChange={(e) => onAuthorChange(e.target.value)}
         />

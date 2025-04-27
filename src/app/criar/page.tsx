@@ -42,7 +42,7 @@ export default function CriarPage() {
   const handleShare = async () => {
     await QuoteCardExportService.shareAsPng(
       cardRef,
-      "Meu QuoteCard",
+      "My QuoteCard",
       `"${quote}" - ${author}`
     );
   };
@@ -55,9 +55,9 @@ export default function CriarPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-6">
             <div className="space-y-4">
-              <h1 className="text-2xl font-bold">Crie seu QuoteCard</h1>
+              <h1 className="text-2xl font-bold">Create your QuoteCard</h1>
               <p className="text-muted-foreground">
-                Personalize sua citação e estilo para criar um card único.
+                Customize your quote and style to create a unique card.
               </p>
             </div>
 
@@ -78,7 +78,7 @@ export default function CriarPage() {
               onClick={resetDefaults}
             >
               <RefreshCw className="mr-2 h-4 w-4" />
-              Restaurar Padrão
+              Restore Default
             </Button>
           </div>
 
