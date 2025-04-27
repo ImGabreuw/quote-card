@@ -32,7 +32,8 @@ export default function CriarPage() {
     if (templateId) {
       applyTemplate(templateId);
     }
-  }, [searchParams, applyTemplate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDownload = async () => {
     await QuoteCardExportService.exportToPng(cardRef);
