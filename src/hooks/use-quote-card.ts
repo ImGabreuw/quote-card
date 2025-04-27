@@ -26,8 +26,10 @@ export function useQuoteCard(): UseQuoteCardReturn {
   };
 
   const applyTemplate = (templateName: string): void => {
-    const template = CARD_MODELS.find(t => t.name === templateName);
+    const template = CARD_MODELS.find(t => t.id === templateName);
     if (template) {
+      setQuote(template.quote);
+      setAuthor(template.author);
       setStyle(template.style);
     }
   };

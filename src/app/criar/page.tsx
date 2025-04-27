@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuoteCardPreview } from "@/components/quote-card-preview";
@@ -12,6 +13,7 @@ import { useQuoteCard } from "@/hooks/use-quote-card";
 import { QuoteCardExportService } from "@/services/quote-card-export.service";
 
 export default function CriarPage() {
+  const searchParams = useSearchParams();
   const {
     quote, 
     author,
@@ -24,6 +26,13 @@ export default function CriarPage() {
   } = useQuoteCard();
   
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const templateId = searchParams.get('templateId');
+    if (templateId) {
+      applyTemplate(templateId);
+    }
+  }, [searchParams, applyTemplate]);
 
   const handleDownload = async () => {
     await QuoteCardExportService.exportToPng(cardRef);
