@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { type QuoteCardStyle } from "@/types/quote-card";
-import { DEFAULT_STYLE, QUOTE_CARD_TEMPLATES } from "@/data/quote-card-templates";
+import { DEFAULT_STYLE, CARD_MODELS } from "@/data/quote-card-templates";
+import type { QuoteCardStyle } from "@/types/quote-card-model";
 
 export const DEFAULT_QUOTE = "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.";
 export const DEFAULT_AUTHOR = "Marcel Proust";
@@ -26,7 +26,7 @@ export function useQuoteCard(): UseQuoteCardReturn {
   };
 
   const applyTemplate = (templateName: string): void => {
-    const template = QUOTE_CARD_TEMPLATES.find(t => t.name === templateName);
+    const template = CARD_MODELS.find(t => t.name === templateName);
     if (template) {
       setStyle(template.style);
     }

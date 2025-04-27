@@ -1,11 +1,22 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import { GRADIENTS } from "@/data/quote-card-templates";
-import { type QuoteCardStyle } from "@/types/quote-card";
+import type { QuoteCardStyle } from "@/types/quote-card-model";
 
 interface StyleEditorProps {
   style: QuoteCardStyle;
@@ -71,7 +82,9 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
                     min={0}
                     max={24}
                     step={1}
-                    onValueChange={(value) => onStyleChange({ borderRadius: value[0] })}
+                    onValueChange={(value) =>
+                      onStyleChange({ borderRadius: value[0] })
+                    }
                   />
                 </div>
               </div>
@@ -103,7 +116,9 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
                     min={14}
                     max={24}
                     step={1}
-                    onValueChange={(value) => onStyleChange({ fontSize: value[0] })}
+                    onValueChange={(value) =>
+                      onStyleChange({ fontSize: value[0] })
+                    }
                   />
                 </div>
               </div>
@@ -121,7 +136,9 @@ export function StyleEditor({ style, onStyleChange }: StyleEditorProps) {
                     min={10}
                     max={50}
                     step={5}
-                    onValueChange={(value) => onStyleChange({ padding: value[0] })}
+                    onValueChange={(value) =>
+                      onStyleChange({ padding: value[0] })
+                    }
                   />
                 </div>
               </div>

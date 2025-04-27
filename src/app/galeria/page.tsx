@@ -2,99 +2,7 @@ import Link from "next/link"
 import { ArrowLeft, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { QuoteCardExample } from "@/components/quote-card-example"
-
-const exampleQuotes = [
-  {
-    quote: "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
-    author: "Marcel Proust",
-    style: {
-      gradient: "bg-gradient-to-br from-rose-50 to-indigo-50",
-      fontFamily: "font-serif",
-      fontSize: 18,
-      padding: 30,
-      borderRadius: 12,
-      shadow: "shadow-lg",
-      quoteIconColor: "text-primary/30",
-      quoteTextColor: "text-gray-800",
-      authorTextColor: "text-gray-700",
-    },
-  },
-  {
-    quote: "Be yourself; everyone else is already taken.",
-    author: "Oscar Wilde",
-    style: {
-      gradient: "bg-gradient-to-r from-blue-100 to-cyan-100",
-      fontFamily: "font-sans",
-      fontSize: 18,
-      padding: 30,
-      borderRadius: 8,
-      shadow: "shadow-md",
-      quoteIconColor: "text-primary",
-      quoteTextColor: "text-gray-800",
-      authorTextColor: "text-primary",
-    },
-  },
-  {
-    quote: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
-    author: "Albert Einstein",
-    style: {
-      gradient: "bg-white",
-      fontFamily: "font-mono",
-      fontSize: 16,
-      padding: 25,
-      borderRadius: 0,
-      shadow: "shadow-xl",
-      quoteIconColor: "text-gray-300",
-      quoteTextColor: "text-black",
-      authorTextColor: "text-gray-700",
-    },
-  },
-  {
-    quote: "In three words I can sum up everything I've learned about life: it goes on.",
-    author: "Robert Frost",
-    style: {
-      gradient: "bg-gradient-to-r from-yellow-100 to-orange-100",
-      fontFamily: "font-sans",
-      fontSize: 18,
-      padding: 35,
-      borderRadius: 16,
-      shadow: "shadow-lg",
-      quoteIconColor: "text-gray-500",
-      quoteTextColor: "text-gray-800",
-      authorTextColor: "text-gray-700",
-    },
-  },
-  {
-    quote: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs",
-    style: {
-      gradient: "bg-gradient-to-r from-green-100 to-emerald-100",
-      fontFamily: "font-serif",
-      fontSize: 18,
-      padding: 30,
-      borderRadius: 12,
-      shadow: "shadow-lg",
-      quoteIconColor: "text-primary/30",
-      quoteTextColor: "text-gray-800",
-      authorTextColor: "text-gray-700",
-    },
-  },
-  {
-    quote: "Life is what happens when you're busy making other plans.",
-    author: "John Lennon",
-    style: {
-      gradient: "bg-gradient-to-r from-indigo-100 to-purple-100",
-      fontFamily: "font-sans",
-      fontSize: 18,
-      padding: 30,
-      borderRadius: 8,
-      shadow: "shadow-md",
-      quoteIconColor: "text-primary",
-      quoteTextColor: "text-gray-800",
-      authorTextColor: "text-primary",
-    },
-  },
-]
+import { CARD_MODELS } from "@/data/quote-card-templates"
 
 export default function GaleriaPage() {
   return (
@@ -124,17 +32,20 @@ export default function GaleriaPage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {exampleQuotes.map((example, index) => (
-              <div key={index} className="group relative">
-                <QuoteCardExample quote={example.quote} author={example.author} style={example.style} />
+            {CARD_MODELS.map((model) => (
+              <div key={model.id} className="group relative">
+                <QuoteCardExample 
+                  quote={model.quote}
+                  author={model.author}
+                  style={model.style}
+                />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100">
                   <Button asChild variant="secondary">
                     <Link
                       href={{
                         pathname: "/criar",
                         query: {
-                          quote: example.quote,
-                          author: example.author,
+                          templateId: model.id,
                         },
                       }}
                     >
