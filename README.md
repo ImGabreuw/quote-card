@@ -1,29 +1,71 @@
-# Create T3 App
+# Quote Card
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+![GitHub language count](https://img.shields.io/github/languages/count/ImGabreuw/quote-card?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/ImGabreuw/quote-card?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/github/issues/ImGabreuw/quote-card?style=for-the-badge)
 
-## What's next? How do I make an app with this?
+> Transform words into visual inspiration! **Quote Card** was born from the desire to eternalize remarkable phrases, powerful thoughts, and motivational messages in elegant and shareable digital cards. Imagine being able to create, customize, and collect quotes that inspire you — or inspire the world with your own words. With an intuitive interface and creative features, Quote Card is the perfect space to bring your creativity to life and spread positivity.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## 💻 Demo
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+<img src="./docs/homepage.png" alt="Homepage" width="1200"/>
+<p align="center"><i>Find instant inspiration: browse impactful quotes.</i></p>
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+<img src="./docs/gallery-page.png" alt="Gallery Page" width="1200"/>
+<p align="center"><i>Explore an exclusive gallery: quickly access ready-to-share cards and stand out.</i></p>
 
-## Learn More
+<img src="./docs/create-page.png" alt="Create Page" width="1200"/>
+<p align="center"><i>Create your own card: turn your ideas into unique visual pieces and win your audience.</i></p>
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## ⚠️ Prerequisites
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- Node 23.9.0+
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## 🚀 Running the project
 
-## How do I deploy this?
+```bash
+# Clone the repository
+$ git clone https://github.com/ImGabreuw/quote-card.git
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+# Enter the project directory
+$ cd quote-card
+
+# Install dependencies
+$ npm i
+
+# Run the application
+$ npm run dev
+```
+
+Access http://localhost:3000/
+
+## 📫 Contribution
+
+To contribute to **quote-card**, follow these steps:
+
+1. Fork this repository.
+2. Create a branch: `git checkout -b <feature-name>`.
+3. Make your changes and commit them: `git commit -m '<short description of the feature>'`
+4. Push to the original branch: `git push origin <feature/feature-name>`
+5. Create the pull request.
+
+Alternatively, check out GitHub's documentation on [how to create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## 🤝 Contributors
+
+We thank the following people who contributed to this project:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/ImGabreuw">
+        <img src="https://avatars.githubusercontent.com/u/60116449?v=4" width="100px;" alt="ImGabreuw"/><br>
+        <sub>
+          <b>ImGabreuw</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+[⬆ Back to top](#quote-card)<br>
